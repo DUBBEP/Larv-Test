@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Employer extends Model
+class Webpage extends Model
 {
+    /** @use HasFactory<\Database\Factories\WebpageFactory> */
     use HasFactory;
-
-    public function Job()
-    {
-        return $this->hasmany(Job::class);
-    }
 }
