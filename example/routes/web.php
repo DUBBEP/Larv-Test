@@ -1,21 +1,25 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Job;
 use App\Models\Article;
 use App\Models\Webpage;
+use App\Http\Controllers\JobController;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/', 'home');
+Route::view('/contact', 'contact');
 
-Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->get();
+Route::resource('jobs', JobController::class);
 
-    return view('jobs', [
-        'jobs' => $jobs
-    ]);
-});
+
+// Route::controller(JobController::class)->group(function () {
+//     Route::get('/jobs', 'index');
+//     Route::get('/jobs/create', 'create');
+//     Route::get('/jobs/{job}', 'show');
+//     Route::post('/jobs', 'store');
+//     Route::get('/jobs/{job}/edit', 'edit');
+//     Route::patch('/jobs/{job}', 'update');
+//     Route::delete('/jobs/{job}', 'destroy');
+// });
 
 Route::get('/articles', function () {
     $articles = Article::with('journalist')->get();
@@ -31,13 +35,4 @@ Route::get('/webpage', function () {
     return view('webpage', [
         'webpages' => $webpages
     ]);
-});
-
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::find($id);
-    return view('job', ['job' => $job]);
-});
-
-Route::get('/contact', function () {
-    return view('contact');
 });

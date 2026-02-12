@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Article;
 use App\Models\Employer;
 use App\Models\Job;
 use App\Models\User;
+use App\Models\Webpage;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,8 +26,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        Employer::factory()->create(10);
-
-        Job::factory()->create(10);
+        Job::factory(10)->create();
+        Webpage::factory(10)->create();
+        Article::factory(10)->create();
     }
 }

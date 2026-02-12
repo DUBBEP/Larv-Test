@@ -20,7 +20,7 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
               <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-              <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
+              <x-nav-link href="/jobs" :active="request()->is('jobs')">jobs</x-nav-link>
               <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
               <x-nav-link href="/articles" :active="request()->is('articles')">Articles</x-nav-link>
               <x-nav-link href="/webpage" :active="request()->is('webpage')">Web Directory</x-nav-link>
@@ -59,7 +59,7 @@
       <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
         <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
         <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-        <x-nav-link href="/jobs" :active="request()->is('jobs')">jobs</x-nav-link>
+        <x-nav-link href="/jobs/index" :active="request()->is('jobs/index')">jobs</x-nav-link>
         <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
         <x-nav-link href="/articles" :active="request()->is('articles')">Articles</x-nav-link>
         <x-nav-link href="/webpage" :active="request()->is('webpage')">Web Directory</x-nav-link>
@@ -79,10 +79,13 @@
   </nav>
 
   <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
-    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 sm:justify-between sm:flex">
       <h1 class="text-3xl font-bold tracking-tight text-white">{{ $heading }}</h1>
+
+      <x-button href="/jobs/create"> Create Job</x-button>
     </div>
   </header>
+  
   <main>
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       {{ $slot }}
